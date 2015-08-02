@@ -11,33 +11,33 @@ namespace phone
         // Method ToDigit
         static void ToDigit(ref char C1, ref char C2, ref char C3, ref char C4, ref char C5, ref char C6, ref char C7)
         {
-        Console.WriteLine("Enter a 7 Number or Letter Phone Number:   ");
-            C1 = Convert.Tochar(Console.Read());
-            C2 = Convert.Tochar(Console.Read());
-            C3 = Convert.Tochar(Console.Read());
-            C4 = Convert.Tochar(Console.Read());
-            C5 = Convert.Tochar(Console.Read());
-            C6 = Convert.Tochar(Console.Read());
-            C7 = Convert.Tochar(Console.Read());
+            Console.WriteLine("Enter a 7 Number or Letter Phone Number:   ");
+            C1 = Convert.ToChar(Console.Read());
+            C2 = Convert.ToChar(Console.Read());
+            C3 = Convert.ToChar(Console.Read());
+            C4 = Convert.ToChar(Console.Read());
+            C5 = Convert.ToChar(Console.Read());
+            C6 = Convert.ToChar(Console.Read());
+            C7 = Convert.ToChar(Console.Read());
             Console.ReadLine();
         }
    
-        static int ProcessInput(ref char C1, ref char C2, ref char C3, ref char C4, ref char C5, ref char C6, ref char C7)
+        static int ProcessInput(char C1, char C2, char C3, char C4, char C5, char C6, char C7)
         {
 
-            if (TestDigit(ref C1) == -1)
+            if (TestDigit(C1) == -1)
                 return -1;
-            if (TestDigit(ref C2) == -1)
+            if (TestDigit(C2) == -1)
                 return -1;
-            if (TestDigit(ref C3) == -1)
+            if (TestDigit(C3) == -1)
                 return -1;
-            if (TestDigit(ref C4) == -1)
-                reture - 1;
-            if (testDigit(ref C5) == -1)
+            if (TestDigit(C4) == -1)
                 return -1;
-            if (TestDigit(ref C6) == -1)
+            if (TestDigit(C5) == -1)
                 return -1;
-            if (testDigit(ref C7) == -1)
+            if (TestDigit(C6) == -1)
+                return -1;
+            if (TestDigit(C7) == -1)
                 return -1;
             if (C1 == '5' && C2 == '5' && C3 == '5')
                 return -1;
@@ -47,10 +47,11 @@ namespace phone
         }
    
         static int TestDigit(char testDigit)
-        { 
-            Char.ToUpper(testDigit) // Convert Character to UpperCase
+        {
+            int result; // char variable to hold result
 
-            char result; // char variable to hold result
+            Char.ToUpper(testDigit); // Convert Character to UpperCase
+
             switch (testDigit)
             {
                 case '0': result = '0'; break;
@@ -67,14 +68,14 @@ namespace phone
             }
             if (result == -1)
             {
-                errorFlag = -1; // Return error if negative 1 is present
+                result = -1; // Return error if negative 1 is present
             }
             else
             {
-                errorFlag = 0; // else return 0
+                result = 0; // else return 0
             }
-            result = testDigit;
-            return testDigit;
+
+            return result;
         }
 
         static void ProcessInput(ref char C1, ref char C2, ref char C3, ref char C4, ref char C5, ref char C6, ref char C7)
@@ -84,13 +85,13 @@ namespace phone
 
         static void Main(string[] args)
         {
-            C1 = '1', C2 = '2', C3 = '3', C4 = '4', C5 = '5', C6 = '6', C7 = '7';
-            ProcessInput(ref C1, ref C2, ref C3, ref C4, ref C5, ref C5, ref C6, ref C7);
-            int returnVal = ProcessInput(ref C1, ref C2, ref C3, ref C4, ref C5, ref C6, ref C7);
+            char C1 = '1', C2 = '2', C3 = '3', C4 = '4', C5 = '5', C6 = '6', C7 = '7';
+            ToDigit(ref C1, ref C2, ref C3, ref C4, ref C5, ref C6, ref C7);
+            int returnVal = ProcessInput(C1, C2, C3, C4, C5, C6, C7);
             if (returnVal == -1)
                 Console.WriteLine("Not a invalid input, please try again.");
             else
-                OutputProcess(ref C1, ref C2, ref C3, ref C4, ref C5, ref C6, ref C7);
+                ProcessInput(ref C1, ref C2, ref C3, ref C4, ref C5, ref C6, ref C7);
         }
     }
 }
